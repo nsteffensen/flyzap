@@ -1,0 +1,91 @@
+Raspberry Pi Microphone
+
+Figure out your chipset
+
+Start by having your Raspi turned off/shutdown (perform a clean shutdown!) and then plugging in your USB audio card. Then boot the Pi as normal.
+	dmesg | grep cm109
+	dmesg | grep Headphone
+	dmesg | grep C
+	dmesg | grep General
+
+---------------------------------------------------------------------
+Updating ALSA Config
+
+Raspbian Stretch - Updating alsa options
+All we have to do is tell Raspbian to look at "card #1" for the default audio. Card #0 is the built in audio, so this is fairly straightforward.
+
+Run sudo nano /usr/share/alsa/alsa.conf and look for the following two lines:
+	defaults.ctl.card 0
+	defaults.pcm.card 0
+Change both “0” to “1” and then save the file. That’s it!
+
+Raspbian Jessie - Updating alsa options
+Earlier versions of Raspbian store sound settings in different places, with different syntax…
+
+For Raspbian Jessie, run sudo nano /etc/asound.conf and put the following in the file and save:
+
+ Download: fileCopy Code
+pcm.!default  {
+ type hw card 1
+}
+ctl.!default {
+ type hw card 1
+}
+This will make the default PCM (audio) output card #1 and the default control also card #1
+
+Raspbian Wheezy - Updating alsa options
+If you're using Wheezy, we'll edit the audio system configuration file with
+
+sudo nano /etc/modprobe.d/alsa-base.conf
+
+For all but the most recent Raspbian Wheezy releases, look for the line that reads:
+
+#options snd-usb-audio index=0
+
+Change this to:
+
+options snd-usb-audio index=0
+
+Note we removed the # at the start of the line.
+
+For the latest Raspbian Wheezy versions, look for this line instead:
+
+options snd-usb-audio index=-2
+
+There's no # to remove in this case, just change the index from -2 to 0:
+
+options snd-usb-audio index=0
+---------------------------------------------------------------------
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+aplay -l = check speaker's card and device number
+arecord -l = microphone's card and device number
+vim .asoundrc
+
+pcm.!default{
+	type asym
+	playback.pcm{
+		type hw
+		card 0
+	}
+	capture.pcm{
+		type plug
+		slave.pcm "hw:1, 0"
+	}
+}
+
+ctl.!default{
+	type hw
+	card 0
+}
+
+Test microphone
+arecord --format=S16_LE --duration=5 --rate=16000 --file-type=raw out.raw
+
+Play it back
+aplay --format=S16_LE --rate=16000 out.raw
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+

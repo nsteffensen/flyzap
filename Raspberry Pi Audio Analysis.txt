@@ -1,0 +1,7 @@
+Raspberry Pi Audio Analysis
+
+Let's Build an Audio Spectrum Analyzer in Python! (pt. 1) the waveform viewer.
+https://www.youtube.com/watch?v=AShHJdSIxkY&t=749s
+
+https://github.com/markjay4k/Audio-Spectrum-Analyzer-in-Python
+https://people.csail.mit.edu/hubert/pyaudio/docs/

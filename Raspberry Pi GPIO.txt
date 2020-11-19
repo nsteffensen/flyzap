@@ -1,0 +1,37 @@
+Raspberry Pi GPIO
+
+https://gpiozero.readthedocs.io/
+
+Using the GPIO Zero library makes it easy to get started with controlling GPIO devices with Python.  
+
+GPIO Zero is installed by default in the Raspbian desktop.  For Lite, install the package for Python 3:
+	sudo apt update
+	sudo apt install python3-gpiozero
+
+--------------------------------------------------------------------------------
+from gpiozero import LED
+from time import sleep
+
+led = LED(17)
+
+while True:
+    led.on()
+    sleep(1)
+    led.off()
+    sleep(1)
+--------------------------------------------------------------------------------
+from gpiozero import LED, Button
+from signal import pause
+
+led = LED(17)
+button = Button(3)
+
+button.when_pressed = led.on
+button.when_released = led.off
+
+pause()
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------

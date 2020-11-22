@@ -8,10 +8,10 @@ import lcddriver
 lcd = lcddriver.lcd()
 
 
-def run_cmd(cmd):
-    p = Popen(cmd, shell = True, stdout = PIPE)
-    output = p.communicate()[0]
-    return output
+# def run_cmd(cmd):
+#     p = Popen(cmd, shell = True, stdout = PIPE)
+#     output = p.communicate()[0]
+#     return output
 
 lcd.lcd_clear()
 

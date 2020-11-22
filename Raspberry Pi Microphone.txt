@@ -85,6 +85,24 @@ Start by having your Raspi turned off/shutdown (perform a clean shutdown!) and t
 	dmesg | grep General
 
 ---------------------------------------------------------------------
+List cards:  cat /proc/asound/cards
+create /etc/asound.conf with following:
+
+   defaults.pcm.card 2
+   defaults.ctl.card 2
+
+DIDN'T WORK
+---------------------------------------------------------------------
+--> Running this command on my RPi0w:
+alsamixer  <---- THE BEST!
+/proc/asound/devices:
+	88: [ 2- 0 ] digital capture device
+
+##################
+##################  Ok, I think this can work as manual headless config.  Sucks for mass deploy, but so it is.
+##################
+
+---------------------------------------------------------------------
 Updating ALSA Config
 
 Raspbian Stretch - Updating alsa options

@@ -1,0 +1,15 @@
+streaming.txt
+
+Install pyaudio on windows
+
+1) Determine Python version 
+    python --version   # on laptop it is 3.8.3
+
+2) Determine Python 32 vs 64
+    python             # [MSC v.1924 64 bit (AMD64)]
+
+3) Download wheel file from https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
+    PyAudio‑0.2.11‑cp38‑cp38‑win_amd64.whl
+
+4) In download directory, install with pip
+    pip install PyAudio-0.2.11-cp38-cp38-win_amd64.whl

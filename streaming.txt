@@ -1,6 +1,7 @@
 streaming.txt
 
-Install pyaudio on windows
+-------------------------------------------------------------------------
+Install pyaudio on Windows:
 
 1) Determine Python version 
     python --version   # on laptop it is 3.8.3
@@ -13,3 +14,13 @@ Install pyaudio on windows
 
 4) In download directory, install with pip
     pip install PyAudio-0.2.11-cp38-cp38-win_amd64.whl
+
+-------------------------------------------------------------------------
+Install pyaudio on Pi:
+    sudo apt-get install python3-pyaudio 
+
+It seems there are only packages for up to Python 3.6, and RPi has 3.7
+    sudo apt autoremove python3
+    sudo apt-get install python3.6
+
+-------------------------------------------------------------------------

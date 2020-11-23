@@ -1,0 +1,28 @@
+Deploying Fleiger Counter to RPi
+
+----------------------------------------------------------
+Headless set up
+
+1) Set up card
+- Download Lite .img
+- Write to SD card
+- Open /boot directory on SD card
+- Create file "wpa_supplicant.conf"  (might have to make it .txt and change it later)
+    network={
+        ssid="MyWifiNetwork"
+        psk="myPassword"
+        key_mgmt=WPA-PSK
+    }
+- Create file "ssh" (empty file with no extension)
+- Eject SD card and install in RPi
+
+2) Open PuTTY
+- Hostname = "raspberrypi", port 22, SSH
+- usr = "pi", pwd = "raspberry"  --> pi@raspberrypi
+- Change hostname so future default Pi's can be found, and password just cuz
+    - sudo raspi-config
+    - #2 = Hostname
+    - #1 = password
+- Finish and reboot
+
+

@@ -1,6 +1,8 @@
 import pyaudio
 import audioop
 
+# http://people.csail.mit.edu/hubert/pyaudio/docs/
+
 # chunk      = 2**11 # Change if too fast/slow, never less than 2**11
 # scale      = 50    # Change if too dim/bright
 # exponent   = 5     # Change if too little/too much difference between loud and quiet sounds
@@ -37,7 +39,7 @@ stream = p.open(format=FORMAT,
 print("Starting, use Ctrl+C to stop")
 
 while True:
-    data  = stream.read(CHUNK)
+    data  = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
     rms   = audioop.rms(data, 2)  # shows volume
     if (rms > 100):
         print(rms)

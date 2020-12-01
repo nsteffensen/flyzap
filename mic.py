@@ -14,7 +14,7 @@ def list_devices():
         i += 1
 
 
-list_devices()
+# list_devices()
 
 chunk      = 2**11 # Change if too fast/slow, never less than 2**11
 scale      = 50    # Change if too dim/bright
@@ -25,7 +25,9 @@ samplerate = 44100
 # Enable stereo mixing in your sound card
 # to make you sound output an input
 # Use list_devices() to list all your input devices
-device   = 2  
+# device   = 2  # I think this works on the PC
+device   = 0  # I think this works on the RPi Zero W
+ 
 
 p = pyaudio.PyAudio()
 stream = p.open(format = pyaudio.paInt16,

@@ -1,0 +1,31 @@
+Deploying FlyZap
+
+- Copy "wpa_supplicant.conf" and "ssh" to the D: boot partition
+- Connect with PuTTY, hostname raspberrypi
+- Login as "pi" with password "raspberry"
+- sudo raspi-config
+	- hostname = flyzap001
+	- password = smx2faro
+	- Interfacing Options > Enable I2C
+- sudo apt update
+- sudo apt install git
+- git clone https://nsteffensen@github.com/nsteffensen/flyzap
+- sudo apt install python3.6
+- sudo unlink /usr/bin/python3
+- sudo ln -s /usr/bin/python3.6 /usr/bin/python3
+- python3 --version
+- sudo apt install python3-gpiozero
+- sudo apt install python3-smbus
+- sudo apt install python3-pyaudio
+- sudo crontab -e      (note, alternates are init.d, SysV, .bashrc)
+	- At very bottom add: @reboot python3 /home/pi/flyzap/flyzap.py &
+	- Ctrl-X
+
+
+
+- sudo apt install python3-distutils
+
+Tips
+- To find the flyzap cron job use; "ps aux | grep flyzap"
+	- Assuming its PID is 298, kill it with; "sudo kill -9 298"
+

@@ -1,5 +1,9 @@
 Deploying FlyZap
 
+- git remote add origin https://nsteffensen:PASSWORD@github.com/nsteffensen/flyzap
+- git push --set-upstream https://nsteffensen:PASSWORD@github.com/nsteffensen/flyzap main
+
+
 - Copy "wpa_supplicant.conf" and "ssh" to the D: boot partition
 - Connect with PuTTY, hostname raspberrypi
 - Login as "pi" with password "raspberry"

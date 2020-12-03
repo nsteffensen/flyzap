@@ -42,7 +42,7 @@ def blueClicked():
     hours, rem = divmod(now-startTime, 3600)
     minutes, seconds = divmod(rem, 60)
     # lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)), 2)
-    lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:0>2}".format(int(hours),int(minutes),seconds)), 2)
+    lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:0>2}".format(int(hours),int(minutes),int(seconds))), 2)
 
 
 

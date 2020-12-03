@@ -15,27 +15,33 @@ DEVICE = 0  # This is specfic to RPi Zero W with USB mic
 # LED setup
 blueLed = LED(17)
 redLed = LED(22)
-blueLed.off()  # logic is backwards
-redLed.off()   # logic is backwards
+blueLed.off()
+redLed.off()
 
 # Button setup
 blueButton = Button(27)
 redButton = Button(24)
 clicks = 0
+# startTime = 
 
 # LCD setup
 lcd = lcddriver.lcd()
 lcd.lcd_clear()
 
-def clicked():
+def blueClicked():
     global clicks
     print('Counter: {}'.format(clicks))
     clicks += 1
-    lcd.lcd_display_string(strftime('Clicks: {}'.format(clicks)), 1)
+    lcd.lcd_display_string(strftime('Zaps: {}'.format(clicks)), 1)
 
-blueButton.when_pressed = clicked
-# blueButton.when_pressed = blueLed.on
-blueButton.when_released = blueLed.on
+def redClicked():
+    redLed.on()
+    sleep(0.25)
+    redLed.off()
+
+blueButton.when_pressed = blueClicked
+blueButton.when_released = blueLed.off
+redButton.when_pressed = redClicked
 
 p = pyaudio.PyAudio()
 stream = p.open(format=FORMAT,
@@ -55,5 +61,5 @@ while True:
         blueLed.on()
         sleep(0.1)
         blueLed.off()
-        clicked()
+        blueClicked()
 

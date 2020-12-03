@@ -1,10 +1,14 @@
 from gpiozero import LED, Button
-from time import sleep, strftime
+from time import sleep, strftime, time
 from subprocess import *
 import lcddriver
 from signal import pause
 import pyaudio
 import audioop
+# from datetime import datetime
+
+# startTime = datetime.now()
+startTime = time.time()
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
@@ -30,9 +34,16 @@ lcd.lcd_clear()
 
 def blueClicked():
     global clicks
+    global startTime
     print('Counter: {}'.format(clicks))
     clicks += 1
     lcd.lcd_display_string(strftime('Zaps: {}'.format(clicks)), 1)
+    now = time.time()
+    hours, rem = divmod(now-startTime, 3600)
+    minutes, seconds = divmod(rem, 60)
+    lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)), 2)
+
+
 
 def redClicked():
     redLed.on()

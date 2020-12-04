@@ -4,8 +4,8 @@ from subprocess import *
 import lcddriver
 from signal import pause
 import pyaudio
-import audioop
 # from datetime import datetime
+from detectZap import fullFFT, justRms
 
 # startTime = datetime.now()
 startTime = time()
@@ -16,22 +16,19 @@ CHANNELS = 1
 RATE = 44100
 DEVICE = 0  # This is specfic to RPi Zero W with USB mic
 
+#------------------------------------------------------------------------------
 # LED setup
 blueLed = LED(17)
 redLed = LED(22)
 blueLed.off()
 redLed.off()
 
-# Button setup
-blueButton = Button(27)
-redButton = Button(24)
-clicks = 0
-# startTime = 
-
+#------------------------------------------------------------------------------
 # LCD setup
 lcd = lcddriver.lcd()
 lcd.lcd_clear()
 
+#------------------------------------------------------------------------------
 def blueClicked():
     global clicks
     global startTime
@@ -44,17 +41,24 @@ def blueClicked():
     # lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)), 2)
     lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:0>2}".format(int(hours),int(minutes),int(seconds))), 2)
 
-
-
+#------------------------------------------------------------------------------
 def redClicked():
     redLed.on()
     sleep(0.25)
     redLed.off()
 
+#------------------------------------------------------------------------------
+# Button setup
+blueButton = Button(27)
+redButton = Button(24)
+clicks = 0
+
 blueButton.when_pressed = blueClicked
 blueButton.when_released = blueLed.off
 redButton.when_pressed = redClicked
 
+#------------------------------------------------------------------------------
+# Main loop
 p = pyaudio.PyAudio()
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
@@ -67,9 +71,12 @@ print("Starting, use Ctrl+C to stop")
 
 while True:
     data  = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
-    rms   = audioop.rms(data, 2)  # shows volume
-    if (rms > 100):
-        print(rms)
+    # rms   = audioop.rms(data, 2)  # shows volume
+    # if (rms > 100):
+    rmsThreshold = 100
+    zap = justRms(data, rmsThreshold)
+    if (zap):
+        # print(rms)
         blueLed.on()
         sleep(0.1)
         blueLed.off()

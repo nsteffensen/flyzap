@@ -9,8 +9,17 @@ def fullFft(v,threshold):
 
 	fs = 44.1e3
 	N  = len(v)
-	print('length of input array = {}'.format(N))
-	
+	print('-------------------------------------------------------')
+	print('Length of input array = {}'.format(N))
+	print('The array: {}'.format(v))
+	print('-------------------------------------------------------')
+	int_values = [x for x in v]
+	print('Length of int array = {}'.format(len(int_values)))
+	print('The array: {}'.format(int_values))
+	print('-------------------------------------------------------')
+
+
+
 	f, Pxx_den = signal.periodogram(v, fs)
 
 	myAvg = sum(Pxx_den[344:500])/len(Pxx_den[344:500])

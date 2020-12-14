@@ -14,7 +14,7 @@ def fullFft(v,threshold):
 	print('The array: {}'.format(v))
 	print('-------------------------------------------------------')
 	# int_values = [x for x in v]
-	int_values = int(bytes.encode('hex'), 16)
+	int_values = int(v.encode('hex'), 16)
 	print('Length of int array = {}'.format(len(int_values)))
 	print('The array: {}'.format(int_values))
 	print('-------------------------------------------------------')

@@ -10,7 +10,8 @@ from detectZap import fullFft, justRms
 # startTime = datetime.now()
 startTime = time()
 
-CHUNK = 1024
+# CHUNK = 1024  # --> /scipy/signal/spectral.py", line 270, in periodogram ==> IndexError: tuple index out of range
+CHUNK = 512
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100

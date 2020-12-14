@@ -5,7 +5,7 @@ import lcddriver
 from signal import pause
 import pyaudio
 # from datetime import datetime
-from detectZap import fullFFT, justRms
+from detectZap import fullFft, justRms
 
 # startTime = datetime.now()
 startTime = time()

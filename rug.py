@@ -77,8 +77,8 @@ while True:
     rmsThreshold = 100
     fftThreshold = 1000
     # zap = justRms(data, rmsThreshold)
-    waveform = map(ord, list(data))
-    zap = fullFft(waveform, fftThreshold)
+    # waveform = map(ord, list(data))  # --> object of type 'map' has no len()
+    zap = fullFft(data, fftThreshold)
     if (zap):
         # print(rms)
         blueLed.on()

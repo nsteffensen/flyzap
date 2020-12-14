@@ -10,8 +10,8 @@ from detectZap import fullFft, justRms
 # startTime = datetime.now()
 startTime = time()
 
-# CHUNK = 1024  # --> /scipy/signal/spectral.py", line 270, in periodogram ==> IndexError: tuple index out of range
-CHUNK = 512
+CHUNK = 1024  # --> /scipy/signal/spectral.py", line 270, in periodogram ==> IndexError: tuple index out of range
+# CHUNK = 512
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
@@ -77,7 +77,8 @@ while True:
     rmsThreshold = 100
     fftThreshold = 1000
     # zap = justRms(data, rmsThreshold)
-    zap = fullFft(data, fftThreshold)
+    waveform = map(ord, list(data))
+    zap = fullFft(waveform, fftThreshold)
     if (zap):
         # print(rms)
         blueLed.on()

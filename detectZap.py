@@ -9,14 +9,16 @@ def fullFft(v,threshold):
 
 	fs = 44.1e3
 	N  = len(v)
-	print('length of input array = ', N)
+	# print('length of input array = ', N)
 	
 	f, Pxx_den = signal.periodogram(v, fs)
 
 	myAvg = sum(Pxx_den[344:500])/len(Pxx_den[344:500])
-	print('mean value = ', myAvg)
-	print('threshold  = ', threshold)
+	# print('mean value = ', myAvg)
+	# print('threshold  = ', threshold)
 	
+	print("myAvg: {}".format(myAvg))
+
 	if myAvg>threshold:
 		return 1
 	else:

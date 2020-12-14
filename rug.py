@@ -74,7 +74,9 @@ while True:
     # rms   = audioop.rms(data, 2)  # shows volume
     # if (rms > 100):
     rmsThreshold = 100
-    zap = justRms(data, rmsThreshold)
+    fftThreshold = 1000
+    # zap = justRms(data, rmsThreshold)
+    zap = fullFft(data, fftThreshold)
     if (zap):
         # print(rms)
         blueLed.on()

@@ -9,7 +9,7 @@ def fullFft(v,threshold):
 
 	fs = 44.1e3
 	N  = len(v)
-	# print('length of input array = ', N)
+	print('length of input array = {}'.format(N))
 	
 	f, Pxx_den = signal.periodogram(v, fs)
 

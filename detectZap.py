@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import signal
 import audioop
-
+from struct import *
 
 #------------------------------------------------------------------------------
 # Convert PyAudio byte array into int16 array for scipy

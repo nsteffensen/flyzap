@@ -10,7 +10,7 @@ def bytes2ints(frame):
     count = len(frame)/2
     format = "%dh"%(count)
     shorts = unpack( format, frame )
-	return shorts
+    return shorts
 
 #------------------------------------------------------------------------------
 # Calculates full FFT but only inspects high bins

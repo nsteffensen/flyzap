@@ -33,9 +33,9 @@ def initializeArrays():
 def countZaps(v,threshold):
 
 	print('---- Starting countZaps')
-	print('Input data type: {}'.format(v.dtype))
-	print('cosinesArray data type: {}'.format(cosinesArray.dtype))
-	print('sinesArray data type: {}'.format(sinesArray.dtype))
+	print('Input data type: {}'.format(type(v)))
+	print('cosinesArray data type: {}'.format(type(cosinesArray)))
+	print('sinesArray data type: {}'.format(type(sinesArray)))
 	print('Input data: {}'.format(v))
 
 	cosineInnerProduct = np.inner(cosinesArray, v)

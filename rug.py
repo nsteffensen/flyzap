@@ -5,8 +5,17 @@ import lcddriver
 from signal import pause
 import pyaudio
 # from datetime import datetime
-from detectZap import fullFft, justRms
+# from detectZap import fullFft, justRms
+from countZapsWithSingleFrequency import initializeArrays, countZaps
 
+#------------------------------------------------------------------------------
+# Setup code
+
+# Pre-compute sine/cosnie arrays needed for DFT
+initializeArrays()
+
+# Record startup time to print uptime indicator on LCD.  
+# Helps identify unwanted reboots, and allows "zaps per unit time" calculation
 # startTime = datetime.now()
 startTime = time()
 
@@ -78,7 +87,8 @@ while True:
     fftThreshold = 1000
     # zap = justRms(data, rmsThreshold)
     # waveform = map(ord, list(data))  # --> object of type 'map' has no len()
-    zap = fullFft(data, fftThreshold)
+    # zap = fullFft(data, fftThreshold)  ## Uses Sciyp, which has been a problem 
+    zap = countZaps(data, fftThreshold)  ## only uses Numpy
     if (zap):
         # print(rms)
         blueLed.on()

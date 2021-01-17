@@ -17,7 +17,7 @@ import numpy as np
 def initializeArrays():
 	global cosinesArray
 	global sinesArray
-	print('hi!!')
+	print('Starting....: Initializing DFT arrays')
 	
 	dt = 1/44.1e3
 	ts = dt * np.arange(0, 1024, 1)
@@ -25,6 +25,8 @@ def initializeArrays():
 	args = 2 * np.pi * fz * ts
 	cosinesArray = np.cos(args)
 	sinesArray   = np.sin(args)
+
+	print('Completed...: Initializing DFT arrays')
 
 
 
@@ -47,48 +49,48 @@ def countZaps(v,threshold):
 # SAMPLE CALCULATION
 ###############################################################################
 
-# pre-compute arrays needed for DFT
-initializeArrays()
+# # pre-compute arrays needed for DFT
+# initializeArrays()
 
-#fileName = 'LoudMusicArray.csv'
-fileName = 'LoudMusicAll.csv'
-print('input file: ', fileName)
+# #fileName = 'LoudMusicArray.csv'
+# fileName = 'LoudMusicAll.csv'
+# print('input file: ', fileName)
 
-# read in audio data from csv file
-myFile = np.genfromtxt(fileName, delimiter=',')
-print('myFile: ', myFile[20000:20100])
+# # read in audio data from csv file
+# myFile = np.genfromtxt(fileName, delimiter=',')
+# print('myFile: ', myFile[20000:20100])
 
-# partition data into segments of length 1024
-lSeg = 1024
-N    = len(myFile)
-print("N = ", N)
+# # partition data into segments of length 1024
+# lSeg = 1024
+# N    = len(myFile)
+# print("N = ", N)
 
-numSegs = N // lSeg
+# numSegs = N // lSeg
 
-print("numSegs: ", numSegs)
+# print("numSegs: ", numSegs)
 
-# Create an array of the desired size
-w, h = lSeg, numSegs;
-M = [[0 for x in range(w)] for y in range(h)]
+# # Create an array of the desired size
+# w, h = lSeg, numSegs;
+# M = [[0 for x in range(w)] for y in range(h)]
 
-myLen = len(M)
-print("length(M): ", myLen)
+# myLen = len(M)
+# print("length(M): ", myLen)
 
-zapCount = 0
-for segNum in range(h):
-	start = lSeg * segNum
-	end   = start + lSeg
-#	print("segNum: ", segNum)
+# zapCount = 0
+# for segNum in range(h):
+# 	start = lSeg * segNum
+# 	end   = start + lSeg
+# #	print("segNum: ", segNum)
 	
-	segData = myFile[start:end]
-#	print("length segData: ", len(segData))
+# 	segData = myFile[start:end]
+# #	print("length segData: ", len(segData))
 	
-	zaps = countZaps(segData,1.0)
-#	print("zaps               = ", zaps)
+# 	zaps = countZaps(segData,1.0)
+# #	print("zaps               = ", zaps)
 	
-	zapCount += zaps
+# 	zapCount += zaps
 	
-print("final zap count: ", zapCount)
+# print("final zap count: ", zapCount)
 
 
 

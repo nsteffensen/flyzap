@@ -32,6 +32,12 @@ def initializeArrays():
 
 def countZaps(v,threshold):
 
+	print('---- Starting countZaps')
+	print('Input data type: {}'.format(v.dtype))
+	print('cosinesArray data type: {}'.format(cosinesArray.dtype))
+	print('sinesArray data type: {}'.format(sinesArray.dtype))
+	print('Input data: {}'.format(v))
+
 	cosineInnerProduct = np.inner(cosinesArray, v)
 	sineInnerProduct   = np.inner(sinesArray, v)
 	amplitude          = np.sqrt( np.square(cosineInnerProduct) +  np.square(sineInnerProduct) )

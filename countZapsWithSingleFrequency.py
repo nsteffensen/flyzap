@@ -12,7 +12,6 @@
 # But if it is fast enough, then more bins can be added to make it more accurate.  How many can be determined by trial and error.
 
 import numpy as np
-# import pickle
 
 
 def initializeArrays():
@@ -33,20 +32,19 @@ def initializeArrays():
 
 def countZaps(vbytes,threshold):
 
-	print('---- Starting countZaps')
-	print('cosinesArray data type: {}'.format(type(cosinesArray)))
-	print('sinesArray data type: {}'.format(type(sinesArray)))
-	print('Single element data type = {}'.format(type(cosinesArray[0])))
-	print('-------- Data input -------')
-	print('Input data type: {}'.format(type(vbytes)))
-	print('Input data: {}'.format(vbytes))
-	print('Single element data type = {}'.format(type(vbytes[0])))
-	print('-------- Data converted -------')
-	# v = pickle.loads(vbytes)
+	# print('---- Starting countZaps')
+	# print('cosinesArray data type: {}'.format(type(cosinesArray)))
+	# print('sinesArray data type: {}'.format(type(sinesArray)))
+	# print('Single element data type = {}'.format(type(cosinesArray[0])))
+	# print('-------- Data input -------')
+	# print('Input data type: {}'.format(type(vbytes)))
+	# print('Input data: {}'.format(vbytes))
+	# print('Single element data type = {}'.format(type(vbytes[0])))
+	# print('-------- Data converted -------')
 	v = np.frombuffer(vbytes, dtype='int16')
-	print('Converted data type: {}'.format(type(v)))
-	print('Converted data: {}'.format(v))
-	print('Single element data type = {}'.format(type(v[0])))
+	# print('Converted data type: {}'.format(type(v)))
+	# print('Converted data: {}'.format(v))
+	# print('Single element data type = {}'.format(type(v[0])))
 
 	cosineInnerProduct = np.inner(cosinesArray, v)
 	sineInnerProduct   = np.inner(sinesArray, v)
@@ -56,6 +54,7 @@ def countZaps(vbytes,threshold):
 #	print('threshold          = ', threshold)
 	
 	if amplitude>threshold:
+		print('-----> {} is greater than {} '.format(amplitude, threshold))
 		return 1
 	else:
 		return 0

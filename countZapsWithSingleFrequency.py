@@ -30,13 +30,18 @@ def initializeArrays():
 
 
 
-def countZaps(v,threshold):
+def countZaps(vbytes,threshold):
 
 	print('---- Starting countZaps')
-	print('Input data type: {}'.format(type(v)))
 	print('cosinesArray data type: {}'.format(type(cosinesArray)))
 	print('sinesArray data type: {}'.format(type(sinesArray)))
-	print('Input data: {}'.format(v))
+	print('-------- Data input -------')
+	print('Input data type: {}'.format(type(vbytes)))
+	print('Input data: {}'.format(vbytes))
+	print('-------- Data converted -------')
+	v = pickle.loads(vbytes)
+	print('Converted data type: {}'.format(type(v)))
+	print('Converted data: {}'.format(v))
 
 	cosineInnerProduct = np.inner(cosinesArray, v)
 	sineInnerProduct   = np.inner(sinesArray, v)

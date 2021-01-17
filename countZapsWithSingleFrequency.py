@@ -12,6 +12,7 @@
 # But if it is fast enough, then more bins can be added to make it more accurate.  How many can be determined by trial and error.
 
 import numpy as np
+import pickle
 
 
 def initializeArrays():

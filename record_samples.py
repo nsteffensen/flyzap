@@ -95,4 +95,4 @@ redButton.when_pressed = redClicked
 lcd.lcd_display_string(strftime('Recording Util'), 1)
 
 while True:
-    
+    pass

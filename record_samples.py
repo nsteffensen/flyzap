@@ -5,6 +5,7 @@ from time import sleep, strftime, time
 from subprocess import *
 import lcddriver
 from signal import pause
+import wave
 
 #------------------------------------------------------------------------------
 clicks = 0

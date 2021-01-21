@@ -75,7 +75,7 @@ stream.close()
 p.terminate()
 
 now = time()
-hours, rem = divmod(now-startTime, 3600)
+hours, rem = divmod(now, 3600)
 minutes, seconds = divmod(rem, 60)
 outfile = "./recs/rec_{:0>2}-{:0>2}-{:0>2}.wav".format(int(hours),int(minutes),int(seconds))
 wf = wave.open(outfile, 'wb')

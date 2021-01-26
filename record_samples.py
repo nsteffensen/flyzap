@@ -75,17 +75,27 @@ def blueClicked():
     now = time()
     hours, rem = divmod(now, 3600)
     minutes, seconds = divmod(rem, 60)
-    outfile = "rec_{:0>2}-{:0>2}-{:0>2}.wav".format(int(hours),int(minutes),int(seconds))
-    wf = wave.open(outfile, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(p.get_sample_size(FORMAT))
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+
+    RAWFILE = True
+    if RAWFILE == True:
+        rawfile = "rec_{:0>2}-{:0>2}-{:0>2}.raw".format(int(hours),int(minutes),int(seconds))
+        file = open(rawfile, "w")
+        file.write(b''.join(frames))
+        file.close
+
+    WAVFILE = True
+    if WAVFILE == True:
+        outfile = "rec_{:0>2}-{:0>2}-{:0>2}.wav".format(int(hours),int(minutes),int(seconds))
+        wf = wave.open(outfile, 'wb')
+        wf.setnchannels(CHANNELS)
+        wf.setsampwidth(p.get_sample_size(FORMAT))
+        wf.setframerate(RATE)
+        wf.writeframes(b''.join(frames))
+        wf.close()
 
     lcd.lcd_display_string(strftime('File written.'), 2)
-    time.sleep(2)
-    lcd.lcd_display_string(strftime(''), 2)
+    sleep(2)
+    lcd.lcd_display_string(strftime('       '), 2)
 
 #------------------------------------------------------------------------------
 blueButton.when_pressed = blueClicked
@@ -96,6 +106,6 @@ lcd.lcd_display_string(strftime('Recording Util'), 1)
 
 while True:
     # pass  # No, this supposedly pegs the CPU.  My results were indeed poor.
-    # signal.pause()  # This should be the right way to "do nothing"
-    sleep(0.75)
-    redClicked()
+    signal.pause()  # This should be the right way to "do nothing"
+    # sleep(0.75)
+    # redClicked()

@@ -79,7 +79,7 @@ def blueClicked():
     RAWFILE = True
     if RAWFILE == True:
         rawfile = "rec_{:0>2}-{:0>2}-{:0>2}.raw".format(int(hours),int(minutes),int(seconds))
-        file = open(rawfile, "w")
+        file = open(rawfile, "wb")
         file.write(b''.join(frames))
         file.close
 
@@ -106,6 +106,6 @@ lcd.lcd_display_string(strftime('Recording Util'), 1)
 
 while True:
     # pass  # No, this supposedly pegs the CPU.  My results were indeed poor.
-    signal.pause()  # This should be the right way to "do nothing"
+    pause()  # This should be the right way to "do nothing"
     # sleep(0.75)
     # redClicked()

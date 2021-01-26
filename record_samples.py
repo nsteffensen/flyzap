@@ -95,4 +95,7 @@ redButton.when_pressed = redClicked
 lcd.lcd_display_string(strftime('Recording Util'), 1)
 
 while True:
-    pass
+    # pass  # No, this supposedly pegs the CPU.  My results were indeed poor.
+    # signal.pause()  # This should be the right way to "do nothing"
+    sleep(0.75)
+    redClicked()

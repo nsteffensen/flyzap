@@ -14,5 +14,5 @@ p = pyaudio.PyAudio()
 devinfo = p.get_default_input_device_info()
 name = devinfo['name']
 rate = devinfo['defaultSampleRate']
-print'Default input device {} has default sample rate of: {}'.format(name, rate)
+print ('Default input device {} has default sample rate of: {}'.format(name, rate))
 

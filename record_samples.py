@@ -43,7 +43,8 @@ def redClicked():
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
-RATE = 44100
+# RATE = 44100  # First try. didn't seem to work
+RATE = 48000  # Value returned by probe_audio
 DEVICE = 0  # RPi Zero W
 RECORD_SECONDS = 5
 WAVE_OUTPUT_FILENAME = "voice.wav"

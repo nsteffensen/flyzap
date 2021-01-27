@@ -1,0 +1,13 @@
+
+
+https://learn.adafruit.com/usb-audio-cards-with-a-raspberry-pi/updating-alsa-config
+
+Raspbian Stretch - Updating alsa options
+    All we have to do is tell Raspbian to look at "card #1" for the default audio. 
+    Card #0 is the built in audio, so this is fairly straightforward.
+
+    Type sudo nano /usr/share/alsa/alsa.conf and look for the following two lines:
+        defaults.ctl.card 0
+        defaults.pcm.card 0
+    Change both “0” to “1” and then save the file. That’s it!
+

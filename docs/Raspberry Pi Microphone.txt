@@ -183,3 +183,42 @@ aplay --format=S16_LE --rate=16000 out.raw
 /////////////////////////////////////////////////////////////////////
 
 
+Make sure you have alsa-utils installed and raise the mic gain. E.G:
+amixer -c 1 sset Mic 100%;
+
+------------------------------
+
+devinfo = p.get_device_info_by_index(1)  # Or whatever device you care about.
+if p.is_format_supported(44100.0,  # Sample rate
+                         input_device=devinfo['index'],
+                         input_channels=devinfo['maxInputChannels'],
+                         input_format=pyaudio.paInt16):
+  print 'Yay!'
+
+  ---------------------------------------------------------------------------------
+import wave
+
+def stereo_to_mono(hex1, hex2):
+    """average two hex string samples"""
+    return hex((ord(hex1) + ord(hex2))/2)
+
+wr = wave.open('piano2.wav','r')
+
+nchannels, sampwidth, framerate, nframes, comptype, compname =  wr.getparams()
+
+ww = wave.open('piano_mono.wav','wb')
+ww.setparams((1,sampwidth,framerate,nframes,comptype,compname))
+
+frames = wr.readframes(wr.getnframes()-1)
+
+new_frames = ''
+
+for (s1, s2) in zip(frames[0::2],frames[1::2]):
+    new_frames += stereo_to_mono(s1,s2)[2:].zfill(2).decode('hex')
+
+ww.writeframes(new_frames)
+
+------------------------------------------------------------------------------------
+"Better than my answer above"
+struct.unpack("<hh", b"\x00\x00\x00\x00")
+# -> gives a 2-tuple of integers, here (0, 0)

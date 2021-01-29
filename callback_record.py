@@ -41,6 +41,7 @@ recorded_frames = []
 #------------------------------------------------------------------------------
 def audioCallback(in_data, frame_count, time_info, status):
     global recorded_frames
+    global recording
     if recording:
         recorded_frames.append(in_data)
         callback_flag = pyaudio.paContinue
@@ -53,6 +54,8 @@ def audioCallback(in_data, frame_count, time_info, status):
 #------------------------------------------------------------------------------
 def blueClickedCallback():
     global recorded_frames
+    global recording
+    global blueLed
     blueLed.on
 
     # Start recording

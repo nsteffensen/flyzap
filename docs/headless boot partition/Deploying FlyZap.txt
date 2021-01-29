@@ -32,7 +32,7 @@ sudo nano /usr/share/alsa/alsa.conf
     defaults.ctl.card 1
     defaults.pcm.card 1
 (Use "arecord -l" to list devices or "alsamixer" for GUI.  May have to sudo or be in "audio" group.)
-
+amixer -c 1 sset Mic 85%;
 
 No! - sudo unlink /usr/bin/python3
 No! - sudo ln -s /usr/bin/python3.6 /usr/bin/python3
@@ -46,7 +46,12 @@ No! sudo python3.6 get-pip.py
 
 - sudo crontab -e      (note, alternates are init.d, SysV, .bashrc)
 	- At very bottom add: @reboot python3 /home/pi/flyzap/flyzap.py &
+	- At very bottom add: @reboot python3 /home/pi/flyzap/callback_record.py &
 	- Ctrl-X
+
+(Alternative)
+    sudo nano /etc/rc.local
+    python3 /home/pi/flyzap/flyzap.py &
 
 
 

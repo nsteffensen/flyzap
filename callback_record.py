@@ -88,14 +88,14 @@ def blueClickedCallback():
 
     RAWFILE = True
     if RAWFILE == True:
-        rawfile = "rec_{:0>2}-{:0>2}-{:0>2}.raw".format(int(hours),int(minutes),int(seconds))
+        rawfile = "/home/pi/flyzap/rec_{:0>2}-{:0>2}-{:0>2}.raw".format(int(hours),int(minutes),int(seconds))
         file = open(rawfile, "wb")
         file.write(b''.join(recorded_frames))
         file.close
 
     WAVFILE = True
     if WAVFILE == True:
-        outfile = "rec_{:0>2}-{:0>2}-{:0>2}.wav".format(int(hours),int(minutes),int(seconds))
+        outfile = "/home/pi/flyzap/rec_{:0>2}-{:0>2}-{:0>2}.wav".format(int(hours),int(minutes),int(seconds))
         wf = wave.open(outfile, 'wb')
         wf.setnchannels(CHANNELS)
         wf.setsampwidth(p.get_sample_size(FORMAT))

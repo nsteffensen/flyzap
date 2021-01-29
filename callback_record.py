@@ -106,7 +106,7 @@ def blueClickedCallback():
 #------------------------------------------------------------------------------
 #  Main
 #------------------------------------------------------------------------------
-blueButton.when_pressed = blueClicked
+blueButton.when_pressed = blueClickedCallback
 # blueButton.when_released = blueLed.off
 redButton.when_pressed = redClicked
 

@@ -46,6 +46,7 @@ def audioCallback(in_data, frame_count, time_info, status):
         recorded_frames.append(in_data)
         callback_flag = pyaudio.paContinue
     else:
+        recorded_frames = []
         callback_flag = pyaudio.paComplete
     return (in_data, callback_flag)
 

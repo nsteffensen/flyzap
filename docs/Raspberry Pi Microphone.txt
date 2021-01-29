@@ -3,6 +3,8 @@ Raspberry Pi Microphone
 Summary: Seems like you have to define the CARD in alsa.config and the DEVICE in the function call.
     USB mic is CARD #1, DEVICE #0
 
+sudo nano /usr/share/alsa/alsa.conf
+
 ---------------------------------------------------------------------
 dmseg | grep USB ---> lead to this eventually:
 [    4.543798] usb 1-1.7.6: new full-speed USB device number 6 using dwc_otg

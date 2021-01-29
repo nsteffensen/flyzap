@@ -24,7 +24,8 @@ def redClicked():
     sleep(0.25)
     redLed.off()
 
-CHUNK = 1024
+# CHUNK = 1024 # What everyone uses
+CHUNK = 2048 # See if this is better for the overflow
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 # RATE = 44100  # First try. didn't seem to work

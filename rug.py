@@ -37,8 +37,8 @@ redLed.off()
 # LCD setup
 lcd = lcddriver.lcd()
 lcd.lcd_clear()
-lcd.lcd_display_string(strftime('Fly-ger Counter Beta Test'.format(clicks)), 1)
-lcd.lcd_display_string(strftime('(C) 2021'.format(clicks)), 2)
+lcd.lcd_display_string(strftime('Fly-ger Counter Beta Test'), 1)
+lcd.lcd_display_string(strftime('(C) 2021'), 2)
 
 #------------------------------------------------------------------------------
 def blueClicked():

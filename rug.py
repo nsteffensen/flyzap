@@ -96,6 +96,8 @@ while True:
     except:
         overflows += 1
         print('Overflow errors = {} '.format(overflows))
+        lcd.lcd_display_string(strftime('Overflows: {}'.format(overflows)), 2)
+
 
 
 # while True:

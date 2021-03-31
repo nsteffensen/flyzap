@@ -85,9 +85,9 @@ overflows = 0
 
 while True:
     try:
-        data  = stream.read(CHUNK, True)  # read(num_frames, exception_on_overflow=True)
+        data = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
         rmsThreshold = 100
-        fftThreshold = 1000
+        fftThreshold = 5000
         zap = countZaps(data, fftThreshold)  ## only uses Numpy
         if (zap):
             # print(rms)
@@ -97,7 +97,7 @@ while True:
             blueClicked()
     except:
         overflows += 1
-        print('Overflow errors = {} '.format(overflows))
+        print('Overflow errors = {}.  Size of data = {}.'.format(overflows, ))
         lcd.lcd_display_string(strftime('Overflows: {}'.format(overflows)), 2)
 
 

@@ -10,6 +10,8 @@ from countZapsWithSingleFrequency import initializeArrays, countZaps
 
 #------------------------------------------------------------------------------
 # Setup code
+lcd.lcd_display_string(strftime('Fly-ger Counter Beta Test'.format(clicks)), 1)
+lcd.lcd_display_string(strftime('(C) 2021'.format(clicks)), 2)
 
 # Pre-compute sine/cosnie arrays needed for DFT
 initializeArrays()

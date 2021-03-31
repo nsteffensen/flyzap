@@ -1,0 +1,21 @@
+
+
+-------------------------------------------------------------------------------
+PyAudio
+-------------------------------------------------------------------------------
+https://people.csail.mit.edu/hubert/pyaudio/docs/
+
+Device API
+    get_device_count(),
+    is_format_supported(),
+    get_default_input_device_info(),
+    get_default_output_device_info(),
+    get_device_info_by_index()
+
+get_default_input_device_info
+
+-------------------------------------------------------------------------------
+PortAudio 2.0
+-------------------------------------------------------------------------------
+http://portaudio.com/docs/v19-doxydocs/structPaDeviceInfo.html
+    double ['defaultSampleRate']

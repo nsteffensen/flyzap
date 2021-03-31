@@ -1,0 +1,29 @@
+
+
+
+----------------------------------------------------------------------------
+  HOWTO Set up job to run on boot
+----------------------------------------------------------------------------
+[Preferred]
+    - sudo nano /etc/rc.local
+  Scroll down, and just before the exit 0 line, enter the following:
+    - python3 /home/pi/flyzap/flyzap.py &
+                                        ^
+                                        |
+                                        |
+Note: the ampersand (&) at the end of the line is needed so that your Python script 
+runs in a different process and does not block execution of the boot process. Without 
+it, the rc.local script would wait for your script to end before continuing, and if 
+you have an infinite loop, you would never get a login prompt.
+
+[Alternative]
+- sudo crontab -e      (note, alternates are init.d, SysV, .bashrc)
+	- At very bottom add: @reboot python3 /home/pi/flyzap/flyzap.py &
+	- OR: At very bottom add: @reboot python3 /home/pi/flyzap/callback_record.py &
+	- Ctrl-X
+
+----------------------------------------------------------------------------
+  HOWTO Kill background process
+----------------------------------------------------------------------------
+- To find the flyzap cron job use; "ps aux | grep flyzap"
+	- Assuming its PID (the very first number, second column) is 298, kill it with; "sudo kill -9 298"

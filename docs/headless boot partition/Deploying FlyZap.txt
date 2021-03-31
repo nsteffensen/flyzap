@@ -32,7 +32,7 @@ sudo nano /usr/share/alsa/alsa.conf
     defaults.ctl.card 1
     defaults.pcm.card 1
 (Use "arecord -l" to list devices or "alsamixer" for GUI.  May have to sudo or be in "audio" group.)
-amixer -c 1 sset Mic 85%;
+amixer -c 1 sset Mic 85%   # Survies reboot!
 
 No! - sudo unlink /usr/bin/python3
 No! - sudo ln -s /usr/bin/python3.6 /usr/bin/python3
@@ -50,9 +50,13 @@ No! sudo python3.6 get-pip.py
 	- Ctrl-X
 
 (Alternative)
-    sudo nano /etc/rc.local
-    python3 /home/pi/flyzap/flyzap.py &
-
+    - sudo nano /etc/rc.local
+  Scroll down, and just before the exit 0 line, enter the following:
+    - python3 /home/pi/flyzap/flyzap.py &
+Note: the ampersand (&) at the end of the line is needed so that your Python script 
+runs in a different process and does not block execution of the boot process. Without 
+it, the rc.local script would wait for your script to end before continuing, and if 
+you have an infinite loop, you would never get a login prompt.
 
 
 - sudo apt install python3-distutils

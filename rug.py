@@ -79,20 +79,38 @@ stream = p.open(format=FORMAT,
 
 print("Starting, use Ctrl+C to stop")
 
-while True:
-    data  = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
-    # rms   = audioop.rms(data, 2)  # shows volume
-    # if (rms > 100):
-    rmsThreshold = 100
-    fftThreshold = 1000
-    # zap = justRms(data, rmsThreshold)
-    # waveform = map(ord, list(data))  # --> object of type 'map' has no len()
-    # zap = fullFft(data, fftThreshold)  ## Uses Sciyp, which has been a problem 
-    zap = countZaps(data, fftThreshold)  ## only uses Numpy
-    if (zap):
-        # print(rms)
-        blueLed.on()
-        sleep(0.1)
-        blueLed.off()
-        blueClicked()
+overflows = 0
 
+while True:
+    try:
+        data  = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
+        rmsThreshold = 100
+        fftThreshold = 1000
+        zap = countZaps(data, fftThreshold)  ## only uses Numpy
+        if (zap):
+            # print(rms)
+            blueLed.on()
+            sleep(0.1)
+            blueLed.off()
+            blueClicked()
+    except:
+        overflows += 1
+        print('Overflow errors = {} '.format(overflows))
+
+
+# while True:
+#     data  = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
+#     # rms   = audioop.rms(data, 2)  # shows volume
+#     # if (rms > 100):
+#     rmsThreshold = 100
+#     fftThreshold = 1000
+#     # zap = justRms(data, rmsThreshold)
+#     # waveform = map(ord, list(data))  # --> object of type 'map' has no len()
+#     # zap = fullFft(data, fftThreshold)  ## Uses Sciyp, which has been a problem 
+#     zap = countZaps(data, fftThreshold)  ## only uses Numpy
+#     if (zap):
+#         # print(rms)
+#         blueLed.on()
+#         sleep(0.1)
+#         blueLed.off()
+#         blueClicked()

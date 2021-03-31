@@ -50,8 +50,7 @@ def blueClicked():
     now = time()
     hours, rem = divmod(now-startTime, 3600)
     minutes, seconds = divmod(rem, 60)
-    # lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds)), 2)
-    lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:0>2}".format(int(hours),int(minutes),int(seconds))), 2)
+    # lcd.lcd_display_string(strftime("Up: {:0>2}:{:0>2}:{:0>2}".format(int(hours),int(minutes),int(seconds))), 2)
 
 #------------------------------------------------------------------------------
 def redClicked():
@@ -95,6 +94,7 @@ while True:
             sleep(0.1)
             blueLed.off()
             blueClicked()
+            lcd.lcd_display_string(strftime('Threshold: {}'.format(zap)), 2)
     except:
         overflows += 1
         print('Overflow errors = {}.  Size of data = {}.'.format(overflows, ))

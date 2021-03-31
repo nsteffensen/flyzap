@@ -55,7 +55,7 @@ def countZaps(vbytes,threshold):
 	
 	if amplitude>threshold:
 		print('Zap detected: {} is greater than {} '.format(amplitude, threshold))
-		return 1
+		return amplitude
 	else:
 		return 0
 		

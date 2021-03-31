@@ -83,7 +83,7 @@ overflows = 0
 
 while True:
     try:
-        data  = stream.read(CHUNK, False)  # read(num_frames, exception_on_overflow=True)
+        data  = stream.read(CHUNK, True)  # read(num_frames, exception_on_overflow=True)
         rmsThreshold = 100
         fftThreshold = 1000
         zap = countZaps(data, fftThreshold)  ## only uses Numpy

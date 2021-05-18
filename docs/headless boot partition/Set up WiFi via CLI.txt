@@ -1,0 +1,26 @@
+If connected via the UART and needing to get WiFi:
+
+<This is a wpasupplicant.conf FAIL?>
+
+sudo raspi-config
+ - Localisation Options > Locale 
+    x One website says set to "none" whch is not an option
+    x Another says check with sudo dpkg-reconfigure locales
+    -> Another says: locale: en_US.UTF-8  // default locale: en_US.UTF-8
+        (I like this one.  Also uncheck en_GB.UTF-8)
+        https://rohankapoor.com/2012/04/americanizing-the-raspberry-pi/
+- Localisation Options > WLAN country = Use
+- sudo iwlist wlan0 scan | grep ESSID
+- sudo nano /etc/wpa_supplicant/wpa_supplicant.conf and add to end:
+        network={
+            ssid="testing"
+            psk="testingPassword"
+        }
+- wpa_cli -i wlan0 reconfigure
+
+Verify with:
+- ifconfig wlan0
+- If the inet addr field has an address beside it, the Raspberry Pi has connected to the network.
+
+
+

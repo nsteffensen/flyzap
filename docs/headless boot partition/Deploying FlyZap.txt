@@ -13,20 +13,20 @@ Deploying FlyZap
 	- Interfacing Options > Enable I2C
 - sudo apt update
 - sudo apt upgrade
-- sudo apt install git
+- sudo apt install git -y
 - git clone https://nsteffensen@github.com/nsteffensen/flyzap
 
 
 //------------------------------------------------------------------------------
-- sudo apt install python3-venv
-- sudo apt install python3.6
+- sudo apt install python3-venv -y
+- sudo apt install python3.6 -y
 - mkdir .venvs && cd .venvs
 - python3 -m venv flyenv
-- sudo apt install python3-gpiozero
-- sudo apt install python3-smbus
-- sudo apt install python3-numpy
-- sudo apt install python3-scipy
-- sudo apt install python3-pyaudio
+- sudo apt install python3-gpiozero -y
+- sudo apt install python3-smbus -y
+- sudo apt install python3-numpy -y
+- sudo apt install python3-scipy -y
+- sudo apt install python3-pyaudio -y
 
 sudo nano /usr/share/alsa/alsa.conf
     defaults.ctl.card 1
@@ -59,7 +59,7 @@ it, the rc.local script would wait for your script to end before continuing, and
 you have an infinite loop, you would never get a login prompt.
 
 
-- sudo apt install python3-distutils
+- sudo apt install python3-distutils -y
 
 Tips
 - To find the flyzap cron job use; "ps aux | grep flyzap"
@@ -91,7 +91,8 @@ sudo nano ~/.bashrc
 
 #REBOOT DEVICE
 
-pip install pyaudio
+sudo apt install python3-pip -y
+pip3 install pyaudio    # Says already installed (presumably from above sudo apt install python3-pyaudio)
 
 #HAPPY NOW IT WORKS
 

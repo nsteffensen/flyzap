@@ -4,16 +4,33 @@ Deploying Fleiger Counter to RPi
 Headless set up
 
 1) Set up card
-- Download Lite .img
-- Write to SD card
-- Open /boot directory on SD card
+- Create SD image using "Raspberry Pi Imager", OS = "Lite"
+- Cerate/open /boot directory on SD card
 - Create file "wpa_supplicant.conf"  (might have to make it .txt and change it later)
     network={
         ssid="MyWifiNetwork"
         psk="myPassword"
         key_mgmt=WPA-PSK
     }
+
+--------------------------------------------------------------------------
+https://www.raspberrypi.org/documentation/configuration/wireless/headless.md
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=us
+
+network={
+ssid="<Name of your wireless LAN>"
+psk="<Password for your wireless LAN>"
+}
+--------------------------------------------------------------------------
+
+
 - Create file "ssh" (empty file with no extension)
+- In the root directory, edit config.txt to add this to the end of the file:
+        #Enable UART
+        enable_uart=1
 - Eject SD card and install in RPi
 
 2) Open PuTTY

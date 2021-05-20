@@ -11,3 +11,11 @@ Raspbian Stretch - Updating alsa options
         defaults.pcm.card 0
     Change both “0” to “1” and then save the file. That’s it!
 
+
+https://pypi.org/project/pyalsaaudio/
+https://larsimmisch.github.io/pyalsaaudio/
+https://github.com/larsimmisch/pyalsaaudio/blob/master/recordtest.py
+
+cat /proc/asound/cards
+cat /proc/asound/Device/pcm0c/info
+
